@@ -11,8 +11,9 @@ const Nav = () => {
   };
 
   return (
-    <div>
-      <Menu onClick={handleClick}>
+    <div className="nav-box">
+      <h1 className="title">土豆@土豆</h1>
+      <Menu onClick={handleClick} mode="vertical" theme="dark">
         {menuList.map((item) => {
           if (item.children) {
             return (
