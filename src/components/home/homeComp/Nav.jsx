@@ -1,10 +1,7 @@
 import React from 'react';
 import { Menu } from 'antd';
-import {
-  MailOutlined,
-  AppstoreOutlined,
-  SettingOutlined,
-} from '@ant-design/icons';
+import { SettingOutlined } from '@ant-design/icons';
+import menuList from '@/mockDatas/menuConfig.js';
 
 const Nav = () => {
   const { SubMenu } = Menu;
@@ -15,31 +12,24 @@ const Nav = () => {
 
   return (
     <div>
-      <Menu onClick={handleClick} mode="vertical">
-        <SubMenu key="sub1" icon={<MailOutlined />} title="Navigation One">
-          <Menu.ItemGroup title="Item 1">
-            <Menu.Item key="1">Option 1</Menu.Item>
-            <Menu.Item key="2">Option 2</Menu.Item>
-          </Menu.ItemGroup>
-          <Menu.ItemGroup title="Iteom 2">
-            <Menu.Item key="3">Option 3</Menu.Item>
-            <Menu.Item key="4">Option 4</Menu.Item>
-          </Menu.ItemGroup>
-        </SubMenu>
-        <SubMenu key="sub2" icon={<AppstoreOutlined />} title="Navigation Two">
-          <Menu.Item key="5">Option 5</Menu.Item>
-          <Menu.Item key="6">Option 6</Menu.Item>
-          <SubMenu key="sub3" title="Submenu">
-            <Menu.Item key="7">Option 7</Menu.Item>
-            <Menu.Item key="8">Option 8</Menu.Item>
-          </SubMenu>
-        </SubMenu>
-        <SubMenu key="sub4" icon={<SettingOutlined />} title="Navigation Three">
-          <Menu.Item key="9">Option 9</Menu.Item>
-          <Menu.Item key="10">Option 10</Menu.Item>
-          <Menu.Item key="11">Option 11</Menu.Item>
-          <Menu.Item key="12">Option 12</Menu.Item>
-        </SubMenu>
+      <Menu onClick={handleClick}>
+        {menuList.map((item) => {
+          if (item.children) {
+            return (
+              <SubMenu
+                key={item.key}
+                icon={<SettingOutlined />}
+                title={item.title}
+              >
+                {item.children.map((ite) => {
+                  return <Menu.Item key={ite.key}>{ite.title}</Menu.Item>;
+                })}
+              </SubMenu>
+            );
+          } else {
+            return <Menu.Item key={item.key}>{item.title}</Menu.Item>;
+          }
+        })}
       </Menu>
     </div>
   );

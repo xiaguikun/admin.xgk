@@ -1,9 +1,9 @@
 import React from 'react';
-import Nav from '@comp/home/homeComp/Nav.jsx';
+import Nav from './homeComp/Nav.jsx';
 import { Row, Col } from 'antd';
-import './index.less'
+import './index.less';
 
-const Home=()=>{
+const HomeContainer = () => {
   return (
     <div className="home-container">
       <Row>
@@ -13,7 +13,7 @@ const Home=()=>{
         <Col span={10}>content</Col>
       </Row>
     </div>
-  )
-}
+  );
+};
 
-export default Home;
+export default HomeContainer;
