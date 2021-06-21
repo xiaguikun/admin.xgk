@@ -13,7 +13,7 @@ const HomeContainer = () => {
         <Col span={4}>
           <Nav></Nav>
         </Col>
-        <Col span={19}>
+        <Col span={20} style={{ height: '100vh', overflow: 'auto' }}>
           <Header></Header>
           <Main></Main>
           <Footer></Footer>

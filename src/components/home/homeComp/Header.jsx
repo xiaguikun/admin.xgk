@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Header = () => {
   const [data, setData] = useState({
     name: 'TUDOU',
-    time: '',
+    time: new Date().toLocaleString(),
   });
   const setTime = () => {
     let nowDate = new Date();
@@ -18,7 +18,9 @@ const Header = () => {
     const timer = setInterval(() => {
       setTime();
     }, 1000);
-    return clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+    };
   }, []);
   return (
     <div className="home-header">
@@ -29,6 +31,7 @@ const Header = () => {
         </div>
       </div>
       <div className="bottom-box">
+        <div className="page">首页</div>
         <div className="time">{data.time}</div>
       </div>
     </div>

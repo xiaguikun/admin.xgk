@@ -12,7 +12,7 @@ const Nav = () => {
 
   return (
     <div className="nav-box">
-      <h1 className="title">土豆@土豆</h1>
+      <h1 className="title">TUDOU</h1>
       <Menu onClick={handleClick} mode="vertical" theme="dark">
         {menuList.map((item) => {
           if (item.children) {
