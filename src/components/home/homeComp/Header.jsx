@@ -6,6 +6,12 @@ const Header = () => {
     name: 'TUDOU',
     time: new Date().toLocaleString(),
   });
+  const [weather, setWeather] = useState({
+    area_1: '浙江',
+    area_2: '杭州',
+    today: {},
+    ct: {},
+  });
 
   // 每秒修改时间参数
   const setTime = () => {
@@ -40,7 +46,14 @@ const Header = () => {
 
     const weather = async () => {
       const weatherRes = await getWeather();
-      console.log(weatherRes);
+      const { area_1, area_2, today } = weatherRes.data.result;
+      setWeather({
+        area_1,
+        area_2,
+        today,
+        ct: today.lifeIndex.ct,
+      });
+      // console.log(weatherRes);
     };
     weather();
     return () => {
@@ -57,6 +70,22 @@ const Header = () => {
       </div>
       <div className="bottom-box">
         <div className="page">首页</div>
+        <div className="weather">
+          <div>
+            {weather.area_1}-{weather.area_2}
+          </div>
+          {weather.today ? (
+            <div>
+              <span> 今日:{weather.today.wtNm1} </span>
+              <span>
+                {' '}
+                气温:{weather.today.wtTemp2}-{weather.today.wtTemp1}{' '}
+              </span>
+              <span> 风力:{weather.today.wtWinpNm1} </span>
+              <span> 穿衣:{weather.ct.liDese}</span>
+            </div>
+          ) : null}
+        </div>
         <div className="time">{data.time}</div>
       </div>
     </div>

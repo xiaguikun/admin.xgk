@@ -43,15 +43,28 @@
     .bottom-box {
       width: 100%;
       height: 40px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
       .page {
         margin-left: 20px;
         line-height: 40px;
-        float: left;
         font-size: 18px;
         font-weight: 500;
       }
+      .weather {
+        height: 100%;
+        display: flex;
+        div {
+          height: 100%;
+          line-height: 40px;
+          span {
+            margin-left: 10px;
+          }
+        }
+      }
       .time {
-        float: right;
         margin-right: 30px;
         line-height: 40px;
       }
